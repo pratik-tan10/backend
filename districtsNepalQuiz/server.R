@@ -58,7 +58,7 @@ server <- function(input, output, session) {
     insertUI(
       selector = "#clicked_districts",
       ui = tags$div(
-        style = ifelse(as.character(input$map_shape_click$id) == as.character(selected_district[click_count()-1]), "width: 25%; border: 1px solid black; color: #f0f0f0; background-color: #73ba98; padding: 5px; margin: 5px;", "border: 1px solid black; background-color: #d5677b; color: #f0f0f0; padding: 5px; margin: 5px;"),
+        style = ifelse(as.character(input$map_shape_click$id) == as.character(selected_district[click_count()-1]), "border: 1px solid black; color: #f0f0f0; background-color: #73ba98; padding: 5px; margin: 5px;", "border: 1px solid black; background-color: #d5677b; color: #f0f0f0; padding: 5px; margin: 5px;"),
         #district_name,
         selected_district[click_count()-1]
       )

@@ -1,32 +1,6 @@
-library(shiny)
+#library(shiny)
 library(leaflet)
 library(plotly)
-
-library(tidyverse)
-
-# Read data from url
-url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
-
-df <- read.csv(url)
-bounds = c(min(df$Lat, na.rm = TRUE), min(df$Long, na.rm = TRUE), max(df$Lat, na.rm = TRUE), max(df$Long, na.rm = TRUE))
-
-# conver from wid to long format
-location_cols <- c("Province.State", "Country.Region", "Lat", "Long")
-# gather the daily cases into a "Date" and "Cases" column
-covid_data_tidy <- df %>%
-  gather(Date, Cases, -one_of(location_cols), na.rm = TRUE) %>%
-  mutate(Date = as.Date(sub("X", "", Date), format = "%m.%d.%y"))
-
-# show the first few rows of the tidy data
-head(covid_data_tidy)
-
-# function to filter data by country
-get_cases_by_country <- function(covid_data_tidy, country) {
-  covid_data_tidy%>%
-    filter(Country.Region == country) %>%
-    select(Confirmed) %>%
-    unlist()
-}
 
 
 ui <- fluidPage(
@@ -88,8 +62,8 @@ ui <- fluidPage(
               inputId = "date",
               label = "Select a date range",
               min = as.Date("2020-01-26"),
-              max = as.Date("2020-08-03"),
-              value = c(as.Date("2020-03-01"), as.Date("2020-04-01")),
+              max = as.Date("2021-08-03"),
+              value = c(as.Date("2020-03-01"), as.Date("2020-08-01")),
               timeFormat = "%b %d, %Y", 
               ticks = FALSE
             )
@@ -121,7 +95,7 @@ ui <- fluidPage(
             selectInput(
               inputId = "country",
               label = "Select a Country",
-              choices = df$Country.Region,
+              choices = country_state$Country.Region,
               selected = "USA"
             ),
             selectInput(

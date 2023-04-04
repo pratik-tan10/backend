@@ -1,0 +1,11 @@
+name: rapp
+title:
+username:
+account: prdh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8747595
+bundleId: 7048743
+url: https://prdh.shinyapps.io/rapp/
+when: 1680625699.82066
+lastSyncTime: 1680625699.82066
