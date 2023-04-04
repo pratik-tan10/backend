@@ -1,0 +1,11 @@
+name: districtsnepalquiz
+title:
+username:
+account: prdh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8757067
+bundleId: 7045370
+url: https://prdh.shinyapps.io/districtsnepalquiz/
+when: 1680569952.12882
+lastSyncTime: 1680569952.12882
